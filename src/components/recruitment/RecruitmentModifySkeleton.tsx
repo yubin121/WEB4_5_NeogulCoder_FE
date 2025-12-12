@@ -1,6 +1,6 @@
 export default function RecruitmentModifySkeleton() {
   return (
-    <div className='w-[920px] mx-auto animate-pulse'>
+    <div className='w-full lg:w-[920px] mx-auto animate-pulse'>
       <div className='flex items-center justify-between mb-8'>
         <div className='flex items-center'>
           <div className='w-10 h-10 rounded-full bg-gray-200' />
@@ -11,21 +11,18 @@ export default function RecruitmentModifySkeleton() {
       <hr className='h-0.5 my-10 bg-gray-200 border-0' />
 
       <div className='flex space-x-10 mb-10'>
-        <div className='w-[440px] h-[60px] bg-gray-200 rounded-[10px]' />
-        <div className='w-[440px] h-[60px] bg-gray-200 rounded-[10px]' />
+        <div className='w-[300px] lg:w-[440px] h-[60px] bg-gray-200 rounded-[10px]' />
       </div>
 
       <div className='flex space-x-10 mb-10'>
-        <div className='w-[440px] h-[60px] bg-gray-200 rounded-[10px]' />
-        <div className='w-[440px] h-[60px] bg-gray-200 rounded-[10px]' />
+        <div className='w-[300px] lg:w-[440px] h-[60px] bg-gray-200 rounded-[10px]' />
       </div>
 
       <div className='flex space-x-10 mb-10'>
-        <div className='w-[440px] h-[60px] bg-gray-200 rounded-[10px]' />
-        <div className='w-[440px] h-[60px] bg-gray-200 rounded-[10px]' />
+        <div className='w-[300px] lg:w-[440px] h-[60px] bg-gray-200 rounded-[10px]' />
       </div>
 
-      <div className='w-[440px] h-[60px] bg-gray-200 rounded-[10px] mb-10' />
+      <div className='w-[300px] lg:w-[440px] h-[60px] bg-gray-200 rounded-[10px] mb-10' />
 
       <div className='flex items-center mt-10 mb-8'>
         <div className='w-10 h-10 rounded-full bg-gray-200' />

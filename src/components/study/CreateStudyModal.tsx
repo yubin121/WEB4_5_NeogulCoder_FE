@@ -108,14 +108,14 @@ export default function CreateStudyModal({ onClose }: CreateStudyModalProps) {
 
           <label htmlFor='imageUpload' className='cursor-pointer'>
             <div
-              className='w-25 h-25 rounded-full bg-gray-300 bg-cover bg-center'
+              className='w-20 h-20 lg:w-25 lg:h-25 rounded-full bg-gray-300 bg-cover bg-center'
               style={{
                 backgroundImage: imagePreview
                   ? `url(${imagePreview})`
                   : musicBunny,
               }}
             ></div>
-            <div className='w-[30px] h-[30px] rounded-full bg-[#111111] absolute bottom-0 right-0 flex justify-center items-center'>
+            <div className='w-[25px] h-[25px] lg:w-[30px] lg:h-[30px] rounded-full bg-[#111111] absolute bottom-0 right-0 flex justify-center items-center'>
               <Camera color='#FFFFFF' size={18} />
             </div>
           </label>
@@ -229,7 +229,7 @@ export default function CreateStudyModal({ onClose }: CreateStudyModalProps) {
                 : '카테고리를 선택해 주세요'}
             </button>
             <div className='absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none'>
-              <ChevronDown />
+              <ChevronDown className='w-4 h-4 lg:w-6 lg:h-6' />
             </div>
             {isOpenCategoryModal && (
               <div className='absolute top-full w-full left-0 z-1'>
@@ -271,7 +271,7 @@ export default function CreateStudyModal({ onClose }: CreateStudyModalProps) {
                     : '진행 방식을 선택해 주세요'}{' '}
                 </button>
                 <div className='absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none'>
-                  <ChevronDown />
+                  <ChevronDown className='w-4 h-4 lg:w-6 lg:h-6' />
                 </div>
                 {isOpenStudyTypeModal && (
                   <div className='absolute top-full w-full left-0 z-1'>
@@ -309,7 +309,7 @@ export default function CreateStudyModal({ onClose }: CreateStudyModalProps) {
                   {location ? location : '지역을 선택해 주세요'}{' '}
                 </button>
                 <div className='absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none'>
-                  <ChevronDown />
+                  <ChevronDown className='w-4 h-4 lg:w-6 lg:h-6' />
                 </div>
                 {isOpenRegionModal && (
                   <div className='absolute top-full w-full left-0 z-1'>

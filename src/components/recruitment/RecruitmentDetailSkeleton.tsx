@@ -1,6 +1,6 @@
 export default function RecruitmentDetailSkeleton() {
   return (
-    <div className='w-[852px] mx-auto animate-pulse'>
+    <div className='w-full lg:w-[852px] mx-auto animate-pulse'>
       <div className='flex mb-4'>
         <div className='w-[300px] h-[40px] rounded-md bg-gray-200' />
       </div>
@@ -16,11 +16,11 @@ export default function RecruitmentDetailSkeleton() {
       <div className='space-y-10'>
         {[...Array(3)].map((_, i) => (
           <div key={i} className='flex space-x-12'>
-            <div className='w-[400px] h-[60px] rounded-md bg-gray-200' />
-            <div className='w-[400px] h-[60px] rounded-md bg-gray-200' />
+            <div className='w-[300px] lg:w-[400px] h-[60px] rounded-md bg-gray-200' />
+            <div className='w-[300px] lg:w-[400px] h-[60px] rounded-md bg-gray-200' />
           </div>
         ))}
-        <div className='w-[400px] h-[60px] rounded-md bg-gray-200' />
+        <div className='w-[300px] lg:w-[400px] h-[60px] rounded-md bg-gray-200' />
       </div>
 
       <div className='w-full h-[600px] my-10  rounded-[10px] '>

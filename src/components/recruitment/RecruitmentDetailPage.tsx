@@ -306,7 +306,7 @@ export default function RecruitmentDetailPage() {
 
           <div className='flex justify-between'>
             <div className='flex'>
-              <span className='text-[25px] text-[#111111] font-bold'>
+              <span className='text-lg lg:text-[25px] text-[#111111] font-bold'>
                 {subject}
               </span>
             </div>
@@ -354,7 +354,7 @@ export default function RecruitmentDetailPage() {
             </div>
 
             <div>
-              <span className='tm4 opacity-50 mr-3'>
+              <span className='tm4 opacity-50 mr-3 text-[10px] lg:text-xs'>
                 {formatDate(createdDate)}
               </span>
             </div>
@@ -366,21 +366,35 @@ export default function RecruitmentDetailPage() {
           <div className='space-y-10'>
             <div className='flex space-x-12'>
               <div className='flex w-[400px]'>
-                <span className='mr-8 tm3 opacity-50'>시작 날짜</span>
-                <span className='tm3'>{formatDate(startedDate)}</span>
+                <span className='mr-8 tm3 opacity-50 text-xs lg:text-sm'>
+                  시작 날짜
+                </span>
+                <span className='tm3 text-xs lg:text-sm'>
+                  {formatDate(startedDate)}
+                </span>
               </div>
               <div className='flex w-[400px]'>
-                <span className=' mr-8 tm3 opacity-50'>종료 날짜</span>
-                <span className='tm3'>{formatDate(endDate)}</span>
+                <span className='mr-8 tm3 opacity-50 text-xs lg:text-sm'>
+                  종료 날짜
+                </span>
+                <span className='tm3 text-xs lg:text-sm'>
+                  {formatDate(endDate)}
+                </span>
               </div>
             </div>
             <div className='flex space-x-12'>
               <div className='flex w-[400px]'>
-                <span className='mr-8 tm3 opacity-50 '>모집 인원</span>
-                <span className='tm3'>{recruitmentCount} 명</span>
+                <span className='mr-8 tm3 opacity-50 text-xs lg:text-sm '>
+                  모집 인원
+                </span>
+                <span className='tm3 text-xs lg:text-sm'>
+                  {recruitmentCount} 명
+                </span>
               </div>
               <div className='flex w-[400px]'>
-                <span className=' mr-8 tm3 opacity-50'>카테고리</span>
+                <span className='mr-8 tm3 opacity-50 text-xs lg:text-sm'>
+                  카테고리
+                </span>
                 <div className='tag-type1 tb5'>
                   {' '}
                   {category ? categoryDisplayNames[category] : '카테고리'}
@@ -389,16 +403,18 @@ export default function RecruitmentDetailPage() {
             </div>
             <div className='flex space-x-12'>
               <div className='flex w-[400px]'>
-                <span className='mr-8 tm3 opacity-50'>진행 방식</span>
-                <span className='tm3'>
+                <span className='mr-8 tm3 opacity-50 text-xs lg:text-sm'>
+                  진행 방식
+                </span>
+                <span className='tm3 text-xs lg:text-sm'>
                   {studyType ? StudyTypeDisplayNames[studyType] : '카테고리'}
                 </span>
               </div>
               <div className='flex w-[400px]'>
-                <span className='mr-8 tm3 opacity-50'>
+                <span className='mr-8 tm3 opacity-50 text-xs lg:text-sm'>
                   {location ? '지역' : '모집 마감일'}
                 </span>
-                <span className='tm3'>
+                <span className='tm3 text-xs lg:text-sm'>
                   {location ? location : formatDate(expiredDate)}
                 </span>
               </div>
@@ -406,8 +422,12 @@ export default function RecruitmentDetailPage() {
 
             {location && (
               <div className='flex w-[400px]'>
-                <span className='mr-8 tm3 opacity-50'>모집 마감일</span>
-                <span className='tm3'>{formatDate(expiredDate)}</span>
+                <span className='mr-8 tm3 opacity-50 text-xs lg:text-sm'>
+                  모집 마감일
+                </span>
+                <span className='tm3 text-xs lg:text-sm'>
+                  {formatDate(expiredDate)}
+                </span>
               </div>
             )}
           </div>

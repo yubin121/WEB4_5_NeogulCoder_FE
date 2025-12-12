@@ -106,7 +106,7 @@ export default function StudyCommunityModifyPage() {
                   ? categoryDisplayNames[category] || category
                   : '게시글 유형을 선택해 주세요'}
               </p>
-              <ChevronDown className='w-6 h-6' />
+              <ChevronDown className='w-4 h-4 lg:w-6 lg:h-6' />
             </button>
 
             {isCategoryOpen && (

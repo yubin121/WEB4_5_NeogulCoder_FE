@@ -1,6 +1,6 @@
 export default function StudyPostDetailSkeleton() {
   return (
-    <div className='w-[898px] mx-auto animate-pulse space-y-6'>
+    <div className='w-full lg:w-[898px] mx-auto animate-pulse space-y-6'>
       <div className='flex justify-between items-center'>
         <div className='w-[60px] h-[40px] rounded-lg bg-gray-200' />
         <div className='w-10 h-10 rounded-lg bg-gray-200' />

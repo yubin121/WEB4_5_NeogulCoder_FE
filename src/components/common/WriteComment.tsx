@@ -61,7 +61,7 @@ export default function WriteComment({
               {commentCount}
             </span>
           </div>
-          <div className='w-full flex my-8'>
+          <div className='w-full flex my-4 lg:my-8 items-center'>
             <div>
               <button
                 className='w-[50px] h-[50px] rounded-full bg-white border-[1px] shrink-0 relative overflow-hidden'
@@ -79,7 +79,7 @@ export default function WriteComment({
             </div>
 
             <input
-              className='w-full h-[50px]  rounded-xl border-[1px] p-5 ml-5 border-[#B8B8B8] tb-4'
+              className='w-full h-10 lg:h-[50px] rounded-xl border-[1px] p-5 ml-5 border-[#B8B8B8] tb-4 text-xs lg:text-sm'
               placeholder='댓글을 입력해주세요'
               value={comment}
               onChange={(e) => setComment(e.target.value)}
@@ -88,11 +88,11 @@ export default function WriteComment({
               }}
             ></input>
           </div>
-          <div className='flex justify-end mb-10'>
+          <div className='flex justify-end mb-5 lg:mb-10'>
             <button
-              className='button-type5 w-full lg:w-[100px] color-[#ffffff] hover:bg-[#292929]'
               onClick={handleSubmit}
               disabled={isSubmitting}
+              className='bg-main inline-flex h-8 lg:h-11 w-15 lg:w-[100px] items-center justify-center rounded-md text-center text-xs md:text-sm text-white hover:bg-[#292929] disabled:bg-[#c9c9c9] transition-colors duration-300'
             >
               댓글 등록
             </button>

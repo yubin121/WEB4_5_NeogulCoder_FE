@@ -159,13 +159,13 @@ export default function RecruitmentWritePage() {
       {isLoading ? (
         <RecruitmentFormSkeleton />
       ) : (
-        <div className='w-auto max-w-[920px] mx-auto'>
+        <div className='w-full max-w-full lg:max-w-[920px] mx-auto'>
           <div className='flex flex-col lg:flex-row lg:items-center justify-between gap-4 lg:gap-0'>
-            <div className='flex mb-2 lg:mb-0'>
-              <div className='flex w-10 h-10 rounded-full bg-[#111111] justify-center items-center'>
+            <div className='flex items-center mb-2 lg:mb-0'>
+              <div className='flex w-8 h-8 lg:w-10 lg:h-10 rounded-full bg-[#111111] justify-center items-center'>
                 <span className='text-white tb2'>1</span>
               </div>
-              <span className='tb2 mx-[25px]'>
+              <span className='tb2 mx-[10px] lg:mx-[25px] text-base lg:text-lg align-center'>
                 스터디 기본 정보를 입력해주세요
               </span>
             </div>
@@ -175,12 +175,22 @@ export default function RecruitmentWritePage() {
                 <button
                   type='button'
                   style={{ borderColor: 'var(--color-border3)' }}
-                  className={`w-full lg:w-[320px] h-[60px] rounded-[10px] flex items-center justify-between p-5 border ${
+                  className={`w-full lg:w-[320px] h-10 lg:h-15 rounded-[10px] flex items-center justify-between p-5 border ${
                     studyId
                       ? 'border-main text-text1 tm4'
                       : 'border-main/10 text-text1/50 tm4'
                   }`}
-                  onClick={() => setIsStudyOpen((prev) => !prev)}
+                  onClick={() => {
+                    // studyList가 없거나 studyId가 선택되지 않았으면 경고
+                    if (!studyList.length || !studyId) {
+                      toast.warning('우선 스터디를 생성해주세요.');
+                      setIsSubmitting(false);
+                      return;
+                    }
+
+                    // 버튼 열기 토글
+                    setIsStudyOpen((prev) => !prev);
+                  }}
                 >
                   <p
                     className={`mr-1 ${
@@ -192,11 +202,11 @@ export default function RecruitmentWritePage() {
                           ?.name
                       : '스터디를 선택해주세요'}
                   </p>
-                  <ChevronDown className='w-6 h-6' />
+                  <ChevronDown className='w-4 h-4 lg:w-6 lg:h-6' />
                 </button>
 
                 {isStudyOpen && (
-                  <div className='absolute top-15 left-0 z-10 w-full lg:w-auto'>
+                  <div className='absolute top-10 lg:top-15 left-0 z-10 w-full lg:w-auto'>
                     <StudyListModal
                       studyList={studyList}
                       onSelect={(selectedId) => {
@@ -218,15 +228,17 @@ export default function RecruitmentWritePage() {
             </div>
           </div>
           <hr
-            className='h-0.5 my-10'
+            className='h-0.5 my-8 lg:my-10'
             style={{ borderColor: 'var(--color-border2)' }}
           />
           <div className='flex flex-col lg:flex-row space-x-10'>
-            <div className='flex flex-col  w-full lg:max-w-[440px]'>
-              <span className='tm-0 mb-2.5'>시작 날짜</span>
-              <div className='flex h-15 rounded-[10px] p-5 mb-10 cursor-not-allowed bg-gray4 justify-between'>
+            <div className='flex flex-col w-full lg:max-w-[440px]'>
+              <span className='tm-0 mb-2.5 text-xs lg:text-base'>
+                시작 날짜
+              </span>
+              <div className='flex h-10 lg:h-15 rounded-[10px] py-2 lg:py-5 px-5 mb-5 lg:mb-10 cursor-not-allowed bg-gray4 justify-between'>
                 <div>
-                  <span>
+                  <span className='text-xs lg:text-base'>
                     {startDate ? formatDate(startDate) : '연도-월-일'}
                   </span>
                 </div>
@@ -236,10 +248,14 @@ export default function RecruitmentWritePage() {
               </div>
             </div>
             <div className='flex flex-col w-full lg:max-w-[440px]'>
-              <span className='tm-0 mb-2.5'>종료 날짜</span>
-              <div className='flex h-15 rounded-[10px] p-5 mb-10 cursor-not-allowed bg-gray4 justify-between'>
+              <span className='tm-0 mb-2.5 text-xs lg:text-base'>
+                종료 날짜
+              </span>
+              <div className='flex h-10 lg:h-15 rounded-[10px] py-2 lg:py-5 px-5 mb-5 lg:mb-10 cursor-not-allowed bg-gray4 justify-between'>
                 <div>
-                  <span>{endDate ? formatDate(endDate) : '연도-월-일'}</span>
+                  <span className='text-xs lg:text-base'>
+                    {endDate ? formatDate(endDate) : '연도-월-일'}
+                  </span>
                 </div>
                 <div>
                   <Calendar className='w-4 h-4' />
@@ -249,22 +265,24 @@ export default function RecruitmentWritePage() {
           </div>
           <div className='flex flex-col lg:flex-row space-x-10 mb-6'>
             <div className='flex flex-col w-full lg:max-w-[440px]'>
-              <span className='tm-0 mb-2.5'>모집 인원</span>
+              <span className='tm-0 mb-2.5 text-xs lg:text-base'>
+                모집 인원
+              </span>
               <div className='relative inline-block '>
                 <button
                   type='button'
                   style={{ borderColor: 'var(--color-border3)' }}
-                  className={`w-full h-[60px] rounded-[10px] flex items-center justify-between p-5 border mb-6 text-left ${
+                  className={`w-full h-10 lg:h-15 rounded-[10px] flex items-center justify-between py-2 lg:py-5 px-5 border mb-6 text-left text-xs lg:text-base ${
                     remainSlots !== null ? 'text-black' : 'text-gray-400'
                   }`}
                   onClick={() => setIsOpen((prev) => !prev)}
                 >
                   <span>{displayText}</span>
-                  <ChevronDown className='w-4 h-4' />
+                  <ChevronDown className='w-4 h-4 lg:w-6 lg:h-6' />
                 </button>
 
                 {isOpen && (
-                  <div className='absolute top-[60px] left-0 z-10 w-screen max-w-full lg:w-auto'>
+                  <div className='absolute top-10 lg:top-15 left-0 z-10 w-screen max-w-full lg:w-auto'>
                     <RemainSlotModal
                       onSelect={(value) => {
                         setRemainSlots(value);
@@ -276,52 +294,60 @@ export default function RecruitmentWritePage() {
               </div>
             </div>
             <div className='flex flex-col w-full lg:max-w-[440px]'>
-              <span className='tm-0 mb-2.5'>카테고리</span>
+              <span className='tm-0 mb-2.5 text-xs lg:text-base'>카테고리</span>
               <div className='relative inline-block  '>
-                <div className='flex  items-center w-full h-[60px] cursor-not-allowed bg-gray4 pl-4 pr-10 appearance-none rounded-[10px] '>
-                  <span>
+                <div className='flex  items-center w-full h-10 lg:h-15 cursor-not-allowed bg-gray4 pl-4 pr-10 appearance-none rounded-[10px] '>
+                  <span className='text-xs lg:text-base'>
                     {category ? categoryDisplayNames[category] : '카테고리'}
                   </span>
                 </div>
 
                 <div className='absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none'>
-                  <ChevronDown />
+                  <ChevronDown className='w-4 h-4 lg:w-6 lg:h-6' />
                 </div>
               </div>
             </div>
           </div>
           <div className='flex flex-col lg:flex-row space-x-10 '>
-            <div className='flex flex-col w-full lg:max-w-[440px] mb-10'>
-              <span className='tm-0 mb-2.5'>진행 방식</span>
+            <div className='flex flex-col w-full lg:max-w-[440px] mb-5 lg:mb-10'>
+              <span className='tm-0 mb-2.5 text-xs lg:text-base'>
+                진행 방식
+              </span>
               <div className='relative inline-block'>
-                <div className='flex  items-center w-full h-[60px] cursor-not-allowed bg-gray4 pl-4 pr-10 appearance-none rounded-[10px] '>
-                  {studyType ? StudyTypeDisplayNames[studyType] : '진행 방식'}
+                <div className='flex  items-center w-full  h-10 lg:h-15 cursor-not-allowed bg-gray4 pl-4 pr-10 appearance-none rounded-[10px] '>
+                  <span className='text-xs lg:text-base'>
+                    {studyType ? StudyTypeDisplayNames[studyType] : '진행 방식'}
+                  </span>
                 </div>
 
                 <div className='absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none'>
-                  <ChevronDown />
+                  <ChevronDown className='w-4 h-4 lg:w-6 lg:h-6' />
                 </div>
               </div>
             </div>
-            <div className='flex flex-col w-full lg:max-w-[440px] mb-10'>
-              <span className='tm-0 mb-2.5'>지역</span>
+            <div className='flex flex-col w-full lg:max-w-[440px] mb-5 lg:mb-10'>
+              <span className='tm-0 mb-2.5 text-xs lg:text-base'>지역</span>
               <div className='relative inline-block'>
-                <div className='flex  items-center w-full h-[60px] cursor-not-allowed bg-gray4 pl-4 pr-10 appearance-none rounded-[10px] '>
-                  <span>{location ? location : '지역'}</span>
+                <div className='flex  items-center w-full  h-10 lg:h-15 cursor-not-allowed bg-gray4 pl-4 pr-10 appearance-none rounded-[10px] '>
+                  <span className='text-xs lg:text-base'>
+                    {location ? location : '지역'}
+                  </span>
                 </div>
 
                 <div className='absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none'>
-                  <ChevronDown />
+                  <ChevronDown className='w-4 h-4 lg:w-6 lg:h-6' />
                 </div>
               </div>
             </div>
           </div>
 
           <div className='flex flex-col w-full lg:max-w-[440px]'>
-            <span className='tm-0 mb-2.5'>모집 마감일</span>
+            <span className='tm-0 mb-2.5 text-xs lg:text-base'>
+              모집 마감일
+            </span>
             <input
               type='date'
-              className='border-[1px] h-15 rounded-[10px] p-5 mb-10'
+              className='border-[1px] h-10 lg:h-15 rounded-[10px] py-2 lg:py-5 px-5 mb-5 lg:mb-10 text-xs lg:text-base'
               style={{ borderColor: 'var(--color-border3)' }}
               value={expiredDate}
               onChange={(e) => setExpiredDate(e.target.value)}
@@ -329,26 +355,26 @@ export default function RecruitmentWritePage() {
               max={endDate.split('T')[0]}
             />
           </div>
-          <div className='flex items-center  mt-10'>
-            <div className='flex w-10 h-10 rounded-full bg-[#111111] justify-center items-center'>
+          <div className='flex items-center mt-5 lg:mt-10'>
+            <div className='flex w-8 h-8 lg:w-10 lg:h-10  rounded-full bg-[#111111] justify-center items-center'>
               <span className='text-white tb2'>2</span>
             </div>
-            <span className='tb2 mx-[10px] lg:mx-[25px]'>
+            <span className='tb2 mx-[10px] lg:mx-[25px] text-base lg:text-lg '>
               스터디에 대해 소개해주세요
             </span>
           </div>
           <hr
-            className='h-0.5 my-10'
+            className='h-0.5 my-8 lg:my-10'
             style={{ borderColor: 'var(--color-border2)' }}
           />
           <input
-            className='border-[1px] w-full h-15 rounded-[10px] p-5 mb-10 tm4'
+            className='border-[1px] w-full h-10 lg:h-15 rounded-[10px] py-2 lg:py-5 px-5 mb-5 lg:mb-10 tm4'
             style={{ borderColor: 'var(--color-border3)' }}
             placeholder='제목을 입력해주세요'
             value={subject}
             onChange={(e) => setSubject(e.target.value)}
           ></input>
-          <div className='mb-10'>
+          <div className='mb-5 lg:mb-10'>
             <ClientEditorWrapper editorRef={editorRef} />
           </div>
           <div className='flex justify-end'>
