@@ -6,10 +6,22 @@ import { Bounce, ToastContainer } from 'react-toastify';
 
 export const metadata: Metadata = {
   title: 'Wibby',
-  description: 'Wibby',
+  description: 'Wibby에서 스터디를 모집하고 효율적으로 일정을 관리해보세요.',
   icons: {
     icon: '/favicon.svg',
     apple: '/apple-touch-icon.png',
+  },
+  openGraph: {
+    siteName: 'Wibby',
+    images: {
+      url: '/apple-touch-icon.png',
+    },
+  },
+  twitter: {
+    title: 'Wibby',
+    images: {
+      url: '/apple-touch-icon.png',
+    },
   },
 };
 
