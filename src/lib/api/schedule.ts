@@ -26,18 +26,30 @@ export const fetchMyTimeVote = async (studyId: number) => {
   return data.data;
 };
 
-export const postMyTimeVote = async (studyId: number, timeSlots: string[]) => {
+export const postMyTimeVote = async (
+  studyId: number,
+  timeMasks: {
+    date: string;
+    timeMask: number;
+  }[]
+) => {
   const { data } = await axiosInstance.post(
     `/api/studies/${studyId}/time-vote/votes`,
-    { timeSlots }
+    { timeMasks }
   );
   return data;
 };
 
-export const putMyTimeVote = async (studyId: number, timeSlots: string[]) => {
+export const putMyTimeVote = async (
+  studyId: number,
+  timeMasks: {
+    date: string;
+    timeMask: number;
+  }[]
+) => {
   const { data } = await axiosInstance.put(
     `/api/studies/${studyId}/time-vote/votes`,
-    { timeSlots }
+    { timeMasks }
   );
   return data;
 };

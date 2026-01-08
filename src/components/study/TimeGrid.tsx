@@ -17,8 +17,12 @@ import TimeGridSkeleton from './TimeGridSkeleton';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import { Flag } from 'lucide-react';
+import { hoursToMask } from '@/utils/getTimeMask';
 
 type Cell = { day: number; hour: number };
+
+export const HOURS_IN_DAY = 24 as const;
+export const FULL_DAY_MASK: number = (1 << HOURS_IN_DAY) - 1;
 
 export default function TimeGrid({
   isLeader,
@@ -225,20 +229,44 @@ export default function TimeGrid({
       if (a.day !== b.day) return a.day - b.day;
       return a.hour - b.hour;
     });
+    console.log('sorted:', sorted);
 
-    const timeSlots: string[] = [];
+    const timeMasks: {
+      date: string;
+      timeMask: number;
+    }[] = [];
+
+    const hourArray: Record<string, number[]> = {};
 
     sorted.forEach(({ day, hour }) => {
       const fullDate = fullDateList[day];
       if (!fullDate) return;
 
-      const time = dayjs(
-        `${fullDate}T${hour.toString().padStart(2, '0')}:00:00`
-      );
-      timeSlots.push(time.format('YYYY-MM-DDTHH:mm:ss'));
+      if (!hourArray[fullDate]) {
+        hourArray[fullDate] = [];
+      }
+
+      hourArray[fullDate].push(hour);
     });
 
-    return timeSlots;
+    Object.entries(hourArray).forEach(([fullDate, hours]) => {
+      timeMasks.push({
+        date: fullDate,
+        timeMask: hoursToMask(hours),
+      });
+    });
+
+    // sorted.forEach(({ day, hour }) => {
+    //   const fullDate = fullDateList[day];
+    //   if (!fullDate) return;
+
+    //   const time = dayjs(
+    //     `${fullDate}T${hour.toString().padStart(2, '0')}:00:00`
+    //   );
+    //   timeMasks.push(time.format('YYYY-MM-DDTHH:mm:ss'));
+    // });
+
+    return timeMasks;
   };
 
   const refreshVoteStats = async () => {
