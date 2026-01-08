@@ -14,13 +14,13 @@ export const metadata: Metadata = {
   openGraph: {
     siteName: 'Wibby',
     images: {
-      url: '/apple-touch-icon.png',
+      url: '/wibby-main-image.png',
     },
   },
   twitter: {
     title: 'Wibby',
     images: {
-      url: '/apple-touch-icon.png',
+      url: '/wibby-main-image.png',
     },
   },
 };
